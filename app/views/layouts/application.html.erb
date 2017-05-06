@@ -9,10 +9,20 @@
   </head>
 
   <body>
-    <div class="container theme-showcase" role="main">
+    <div class="container theme-showcase">     
+      <% if user_signed_in? %>
+        <%= render "partials/navbar" %>
+      <% end %>
+      <% if notice %>
+        <p class="alert bg-success"><%= notice %></p>
+      <%end%> 
+      <% if alert %>
+        <p class="alert bg-danger"><%= alert %></p>
+      <%end%> 
+      
       <div class="jumbotron">
           <%= yield %>
-      </div>
+      </div>  
     </div>
   </body>
 </html>

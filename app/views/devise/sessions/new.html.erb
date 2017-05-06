@@ -1,0 +1,21 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>    
+  <div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Sign in</h2>       
+        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Username', autofocus: true, type: 'email' %>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', type:"password" %></br>
+        <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
+      </form>
+      <%= render "devise/shared/links" %>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<% end %>
+
+<style>
+  body {
+    background-color: #eee;
+  }
+</style>

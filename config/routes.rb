@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  get 'portal/index' => 'portal#index', :as => 'portal'
+  get 'admin/index' => 'admin#index', :as => 'admin'
+  get 'super_admin/index' => 'super_admin#index', :as => 'super_admin'
+
+  devise_for :users
 
   root 'home#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
