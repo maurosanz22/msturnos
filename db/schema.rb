@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506014424) do
+ActiveRecord::Schema.define(version: 20170506042331) do
+
+  create_table "areas", force: :cascade do |t|
+    t.string   "codigo"
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.integer  "area_id"
+    t.string   "razon_social"
+    t.string   "cuit"
+    t.string   "titular"
+    t.string   "email"
+    t.string   "telefono"
+    t.string   "celular"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["area_id"], name: "index_companies_on_area_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

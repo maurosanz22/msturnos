@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :companies
   resources :areas
   get 'portal/index' => 'portal#index', :as => 'portal'
   get 'admin/index' => 'admin#index', :as => 'admin'

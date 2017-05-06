@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1>Rubros <%= link_to 'Nuevo', new_area_path, :class =>"btn btn-success" %></h1>
 
-<h1>Areas</h1>
-
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Codigo</th>
@@ -16,14 +14,11 @@
       <tr>
         <td><%= area.codigo %></td>
         <td><%= area.nombre %></td>
-        <td><%= link_to 'Show', area %></td>
-        <td><%= link_to 'Edit', edit_area_path(area) %></td>
-        <td><%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+            <%= render "partials/editBttn", url_path: edit_area_path(area) %>
+            <%= render "partials/deleteBttn", url_path: area %>
+        <?td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Area', new_area_path %>

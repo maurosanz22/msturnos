@@ -1,0 +1,50 @@
+<%= form_for(company) do |f| %>
+  <% if company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= select_tag :areaId, options_from_collection_for_select(@areas, "id", "nombre"), include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :razon_social %>
+    <%= f.text_field :razon_social %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cuit %>
+    <%= f.text_field :cuit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :titular %>
+    <%= f.text_field :titular %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefono %>
+    <%= f.text_field :telefono %>
+  </div>
+
+  <div class="field">
+    <%= f.label :celular %>
+    <%= f.text_field :celular %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
