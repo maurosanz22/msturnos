@@ -10,11 +10,7 @@ class ApplicationController < ActionController::Base
 			portal_path
 		end 
   end
-
-	def after_sign_up_path_for(resource_or_scope)
-    new_user_session_path
-  end
-
+	
   protected 
 
 	def authentication_user!
