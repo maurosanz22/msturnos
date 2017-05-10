@@ -1,39 +1,75 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Informacion
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Rubro:</strong>
+          <%= @company.nombre_rubro %>
+        </p>
 
-<p>
-  <strong>Area:</strong>
-  <%= @company.area %>
-</p>
+        <p>
+          <strong>Razon social:</strong>
+          <%= @company.razon_social %>
+        </p>
 
-<p>
-  <strong>Razon social:</strong>
-  <%= @company.razon_social %>
-</p>
+        <p>
+          <strong>Cuit:</strong>
+          <%= @company.cuit %>
+        </p>
 
-<p>
-  <strong>Cuit:</strong>
-  <%= @company.cuit %>
-</p>
+        <p>
+          <strong>Titular:</strong>
+          <%= @company.titular %>
+        </p>
 
-<p>
-  <strong>Titular:</strong>
-  <%= @company.titular %>
-</p>
+        <p>
+          <strong>Email:</strong>
+          <%= @company.email %>
+        </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @company.email %>
-</p>
+        <p>
+          <strong>Telefono:</strong>
+          <%= @company.telefono %>
+        </p>
 
-<p>
-  <strong>Telefono:</strong>
-  <%= @company.telefono %>
-</p>
+        <p>
+          <strong>Celular:</strong>
+          <%= @company.celular %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        Administradores <%= link_to 'Nuevo', new_admin_path, :class =>"btn btn-success btn-xs" %>
+      </div>
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-<p>
-  <strong>Celular:</strong>
-  <%= @company.celular %>
-</p>
-
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+          <tbody>
+            <% User.all.each do |user| %>
+              <tr>
+                <td><%= user.email %></td>
+                <td>
+                  <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> </button>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<%= link_to 'Atras', companies_path, :class =>"btn btn-danger" %>

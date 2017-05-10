@@ -7,8 +7,6 @@
       <th>Razon social</th>
       <th>Cuit</th>
       <th>Titular</th>
-      <th>Email</th>
-      <th>Telefono</th>
       <th>Celular</th>
       <th colspan="3"></th>
     </tr>
@@ -21,12 +19,12 @@
         <td><%= company.razon_social %></td>
         <td><%= company.cuit %></td>
         <td><%= company.titular %></td>
-        <td><%= company.email %></td>
-        <td><%= company.telefono %></td>
         <td><%= company.celular %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+            <%= render "partials/editBttn", url_path: company_path(company) %>
+            <%= render "partials/editBttn", url_path: edit_company_path(company) %>
+            <%= render "partials/deleteBttn", url_path: company %>
+        </td>
       </tr>
     <% end %>
   </tbody>

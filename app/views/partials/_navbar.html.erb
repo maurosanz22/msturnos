@@ -14,7 +14,7 @@
                 <%= link_to "MSturnos", admin_path, :class => "navbar-brand" %>
             <% end %>
             <% if current_user.is_normal_user? %>
-                <%= link_to "MSturnos", user_path, :class => "navbar-brand" %>
+                <%= link_to "MSturnos", portal_path, :class => "navbar-brand" %>
             <% end %>            
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -22,7 +22,7 @@
         <ul class="nav navbar-nav">
             <% if current_user.is_normal_super_admin? %>
                 <li><a href="#">Administradores</a></li>
-                <li><%= link_to "Empresas", '../companies' %></li>   
+                <li><%= link_to "Empresas", companies_path %></li>   
                 <li><%= link_to "Rubros", '../areas' %></li>
             <% end %>
             <% if current_user.is_normal_admin? %>
@@ -30,7 +30,6 @@
                 <li><a href="#">Turnos</a></li>
             <% end %>
             <% if current_user.is_normal_user? %>
-                <li><a href="#">Mis Turnos</a></li>
                 <li><a href="#">Buscar empresa</a></li>
             <% end %>            
         </ul>

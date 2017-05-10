@@ -1,52 +1,59 @@
 <%= form_for(company) do |f| %>
   <% if company.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
-
       <ul>
-      <% company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% company.errors.full_messages.each do |message| %>
+          <li class="form-error"><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
   
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="rubro">Rubro</label>
+      <%= f.select :area_id, @areas.collect {|x| [x.nombre, x.id]}, {include_blank: true}, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label :razon_social %>
+      <%= f.text_field :razon_social, class:"form-control", placeholder:"Razon Social" %>
+    </div>
   
-  <div class="field">
-    <%= select_tag :areaId, options_from_collection_for_select(@areas, "id", "nombre"), include_blank: true %>
+    <div class="form-group col-md-6">
+      <%= f.label :cuit %>
+      <%= f.text_field :cuit, class:"form-control", placeholder:"Cuit" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :razon_social %>
-    <%= f.text_field :razon_social %>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label :titular %>
+      <%= f.text_field :titular, class:"form-control", placeholder:"Titular" %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :email %>
+      <%= f.email_field :email, class:"form-control", placeholder:"Email" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :cuit %>
-    <%= f.text_field :cuit %>
-  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label :telefono %>
+      <%= f.text_field :telefono, class:"form-control", placeholder:"Telefono" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :titular %>
-    <%= f.text_field :titular %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :telefono %>
-    <%= f.text_field :telefono %>
-  </div>
-
-  <div class="field">
-    <%= f.label :celular %>
-    <%= f.text_field :celular %>
+    <div class="form-group col-md-6">
+      <%= f.label :celular %>
+      <%= f.text_field :celular, class:"form-control", placeholder:"Celular" %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Guardar', :class =>"btn btn-info" %>
+    <%= link_to 'Cancelar', companies_path, :class =>"btn btn-danger" %>
   </div>
 <% end %>

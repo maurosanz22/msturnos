@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506042331) do
+ActiveRecord::Schema.define(version: 20170509013412) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "codigo"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 20170506042331) do
     t.integer  "permission_level",       default: 1
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "userscompanies", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_userscompanies_on_company_id"
+    t.index ["user_id"], name: "index_userscompanies_on_user_id"
   end
 
 end

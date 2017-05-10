@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
+  #before_action :authentication_super_admin!
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_action :authentication_super_admin!
+  before_action :set_areas
   # GET /companies
   # GET /companies.json
   def index
@@ -15,7 +16,6 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
-    @areas = Area.all
   end
 
   # GET /companies/1/edit
@@ -26,11 +26,10 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
-    set_area
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.html { redirect_to new_user_registration_path(company_id: @company.id, email: @company.email) , notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -69,13 +68,8 @@ class CompaniesController < ApplicationController
       @company = Company.find(params[:id])
     end
 
-    def set_area
-      areaId = params[:areaId]
-      if areaId != ""
-        @company.area = Area.find(areaId)
-      else 
-        params[:areaId] = []
-      end
+    def set_areas
+      @areas = Area.all  
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

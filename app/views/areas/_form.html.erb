@@ -2,12 +2,13 @@
   <% if area.errors.any? %>
     <div id="error_explanation">
       <% area.errors.full_messages.each do |message| %>
-        <li style="color:red;"><%= message %></li>
+        <li class="form-error"><%= message %></li>
       <% end %>
       </ul>
     </div>
     <br>
   <% end %>
+  
   <div class="row">
     <div class="form-group col-md-6">
       <label for="codigo">Codigo</label>

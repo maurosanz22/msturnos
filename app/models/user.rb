@@ -4,5 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :userscompanies
+  has_many :companies, through: :userscompanies
   include PermissionsConcern
 end
