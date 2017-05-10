@@ -11,6 +11,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @users = @company.users.where(permission_level: 2)
   end
 
   # GET /companies/new

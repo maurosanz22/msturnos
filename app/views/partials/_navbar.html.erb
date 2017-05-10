@@ -23,11 +23,11 @@
             <% if current_user.is_normal_super_admin? %>
                 <li><a href="#">Administradores</a></li>
                 <li><%= link_to "Empresas", companies_path %></li>   
-                <li><%= link_to "Rubros", '../areas' %></li>
+                <li><%= link_to "Rubros", areas_path %></li>
             <% end %>
             <% if current_user.is_normal_admin? %>
-                <li><a href="#">Usuarios</a></li>
-                <li><a href="#">Turnos</a></li>
+                <li><%= link_to "Sucursales", branch_company_path(company_id: current_user.companies.first.id, branch_id: 0) %></li>
+                <li><%= link_to "Datos de la empresa", current_user.companies.first %></li>
             <% end %>
             <% if current_user.is_normal_user? %>
                 <li><a href="#">Buscar empresa</a></li>

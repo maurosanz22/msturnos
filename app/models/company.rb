@@ -1,5 +1,6 @@
 class Company < ApplicationRecord
   belongs_to :area
+  has_many :branches
   has_many :userscompanies
   has_many :users, through: :userscompanies
   accepts_nested_attributes_for :area, :reject_if => proc { |attrs| attrs['codigo'].blank? && attrs['nombre'].blank? }

@@ -57,7 +57,7 @@
           </thead>
 
           <tbody>
-            <% User.all.each do |user| %>
+            <% @company.users.all.each do |user| %>
               <tr>
                 <td><%= user.email %></td>
                 <td>
@@ -72,4 +72,4 @@
     
   </div>
 </div>
-<%= link_to 'Atras', companies_path, :class =>"btn btn-danger" %>
+<!--<%= link_to 'Atras', companies_path, :class =>"btn btn-danger" %>-->
