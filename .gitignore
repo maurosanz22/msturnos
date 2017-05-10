@@ -12,6 +12,7 @@
 /db/*.sqlite3-journal
 /db/msturnos_dev
 
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -20,4 +21,4 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-db/msturnos_dev
+
