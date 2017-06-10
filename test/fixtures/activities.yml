@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  area: one
+  Nombre: MyString
+  cupo: 1
+  duracion_minutos: 1
+
+two:
+  area: two
+  Nombre: MyString
+  cupo: 1
+  duracion_minutos: 1

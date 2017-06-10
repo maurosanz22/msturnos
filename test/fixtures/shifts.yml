@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shift_type: one
+  branch_activity: one
+  decha: 2017-05-15 20:01:37
+  hora_inicio: MyString
+  hora_fin: MyString
+
+two:
+  shift_type: two
+  branch_activity: two
+  decha: 2017-05-15 20:01:37
+  hora_inicio: MyString
+  hora_fin: MyString

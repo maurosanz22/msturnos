@@ -42,7 +42,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up(resource_name, resource)
     puts "registration controller - sig up"
-    #sign_in(resource_name, resource)
   end
   
   def after_sign_up_path_for(resource)
@@ -53,10 +52,4 @@ class RegistrationsController < Devise::RegistrationsController
     puts "registration controller - after update"
     super
   end
-
-  private 
-  #def sign_up_params
-  #  puts "registration controller - sign_up_params"
-  #  params.require(:user).permit(:email, :password, :password_confirmation, :permission_level)
-  #end
 end

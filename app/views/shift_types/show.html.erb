@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @shift_type.codigo %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @shift_type.nombre %>
+</p>
+
+<%= link_to 'Edit', edit_shift_type_path(@shift_type) %> |
+<%= link_to 'Back', shift_types_path %>

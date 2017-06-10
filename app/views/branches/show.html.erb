@@ -1,24 +1,84 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4>Datos sucursal</h4>
+      </div>
+      <div class="panel-body">
+        <p><strong>Nombre: </strong><%= @branch.nombre %></p>
+        <p><strong>Direccion: </strong><%= @branch.direccion %></p>
+        <p><strong>Telefono: </strong><%= @branch.telefono %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h4>Actividades <%= link_to 'Nuevo', "", :class =>"btn btn-success btn-xs", "data-toggle" => "modal", "data-target" => "#myModal" %></h4>
+      </div>
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Cupo</th>
+              <th>Duracion</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @activities.each do |activity| %>
+              <tr>
+                <td><%= activity.Nombre %></td>
+                <td><%= activity.cupo %> pers.</td>
+                <td><%= activity.duracion_minutos %> min.</td>
+                <td>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <%= link_to 'Atras', branches_path, :class =>"btn btn-danger" %>
+  </div>
+</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @branch.nombre %>
-</p>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        Nueva actividad <%= @branch.id %>
+      </div>
+      <div class="modal-body">
+        <%= form_tag create_activity_branch_path, :method=>'post' do %>
+          <div class="form-group">
+            <label>Nombre</label>
+            <%= text_field_tag :nombre, params[:nombre], class:"form-control", placeholder:"Nombre", :required => true %>
+          </div>
 
-<p>
-  <strong>Direccion:</strong>
-  <%= @branch.direccion %>
-</p>
+          <div class="form-group">
+            <label for="cupo">Cupo por turno</label>
+            <%= number_field_tag :cupo, params[:cupo], class:"form-control", :required => true %>
+          </div>
 
-<p>
-  <strong>Telefono:</strong>
-  <%= @branch.telefono %>
-</p>
+          <div class="form-group">
+            <label>Duracion en minutos</label>
+            <%= number_field_tag :duracion_minutos, params[:duracion_minutos], class:"form-control", :required => true %>
+          </div>
+          <%= hidden_field_tag(:branch_id, @branch.id) %>         
 
-<p>
-  <strong>Company:</strong>
-  <%= @branch.company %>
-</p>
-
-<%= link_to 'Edit', edit_branch_path(@branch) %> |
-<%= link_to 'Back', branches_path %>
+          <div class="actions">
+            <%= button_to "Guardar", create_activity_branch_path, :class =>"btn btn-info" %>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

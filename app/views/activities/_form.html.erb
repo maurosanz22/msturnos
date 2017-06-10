@@ -1,0 +1,34 @@
+<%= form_for(activity) do |f| %>
+  <% if activity.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% activity.errors.full_messages.each do |message| %>
+        <li class="form-error"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <label>Sucursal</label>
+    <%= f.select :branch_id, @branches.collect {|x| [x.nombre, x.id]}, {include_blank: true}, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Nombre %>
+    <%= f.text_field :Nombre, class:"form-control", placeholder:"Nombre" %>
+  </div>
+
+  <div class="form-group">
+    <label for="cupo">Cupo por turno</label>
+    <%= f.number_field :cupo, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :duracion_minutos %>
+    <%= f.number_field :duracion_minutos, class:"form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= render "partials/saveAndCancelBttn", form: f, cancel_path: activities_path %>
+  </div>
+<% end %>

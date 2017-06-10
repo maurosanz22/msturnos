@@ -1,0 +1,2 @@
+class SearchManagementShift < ApplicationRecord
+end

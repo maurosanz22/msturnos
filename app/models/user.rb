@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :userscompanies
   has_many :companies, through: :userscompanies
   include PermissionsConcern
+
+  def get_company_user_admin 
+    companies.first
+  end
 end

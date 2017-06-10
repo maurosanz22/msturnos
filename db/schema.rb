@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510113728) do
+ActiveRecord::Schema.define(version: 20170518002732) do
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "branch_id"
+    t.string   "Nombre"
+    t.integer  "cupo"
+    t.integer  "duracion_minutos"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["branch_id"], name: "index_activities_on_branch_id"
+  end
 
   create_table "areas", force: :cascade do |t|
     t.string   "codigo"
@@ -40,6 +50,43 @@ ActiveRecord::Schema.define(version: 20170510113728) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["area_id"], name: "index_companies_on_area_id"
+  end
+
+  create_table "search_management_shifts", force: :cascade do |t|
+    t.integer  "branch_id"
+    t.integer  "activity_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "shift_types", force: :cascade do |t|
+    t.integer  "branch_id"
+    t.string   "codigo"
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["branch_id"], name: "index_shift_types_on_branch_id"
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.integer  "shift_type_id"
+    t.integer  "activity_id"
+    t.datetime "decha"
+    t.string   "hora_inicio"
+    t.string   "hora_fin"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["activity_id"], name: "index_shifts_on_activity_id"
+    t.index ["shift_type_id"], name: "index_shifts_on_shift_type_id"
+  end
+
+  create_table "user_shifts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "shift_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shift_id"], name: "index_user_shifts_on_shift_id"
+    t.index ["user_id"], name: "index_user_shifts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

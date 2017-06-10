@@ -1,0 +1,3 @@
+class ManagementShift < ApplicationRecord
+    
+end

@@ -1,0 +1,26 @@
+<%= render "partials/titleAndNewBttn", title: "Actividades", url_path: new_activity_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sucursal</th>
+      <th>Nombre</th>
+      <th>Cupo</th>
+      <th>Duracion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.branch.nombre %></td>
+        <td><%= activity.Nombre %></td>
+        <td><%= activity.cupo %> pers.</td>
+        <td><%= activity.duracion_minutos %> min.</td>
+        <td>
+          <%= render "partials/editBttn", url_path: edit_activity_path(activity) %>
+          <%= render "partials/deleteBttn", url_path: activity %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

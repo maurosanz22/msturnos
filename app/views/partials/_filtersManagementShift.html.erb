@@ -1,0 +1,58 @@
+<%= form_tag management_shifts_path, :method=>'get' do |f| %>
+  <div class="row">
+    <div class="form-group col-xs-4">
+      <%= select_tag :branch_id, options_from_collection_for_select(@branches, "id", "nombre", params[:branch_id]) ,prompt: "Seleccionar sucursal", class:"form-control", :onChange=>"javascript: this.form.submit_button.click();"%>
+    </div>
+    <div class="form-group col-xs-4">
+      <%= select_tag :activity_id, options_from_collection_for_select(@activities, "id", "Nombre", params[:activity_id]), prompt: "Seleccionar actividad", class:"form-control"%>
+    </div>
+    
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-4">
+      <div class="row">
+        <div class='col-sm-12'>
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker1'>
+              <%= text_field_tag :since, params[:since], class:"form-control", placeholder:"Fecha desde" %>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript">
+          $(function () {
+              $('#datetimepicker1').datetimepicker();
+          });
+        </script>
+      </div>
+    </div>
+    <div class="form-group col-xs-4">
+      <div class="row">
+        <div class='col-sm-12'>
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker2'>
+              <%= text_field_tag :until, params[:until], class:"form-control", placeholder:"Fecha hasta" %>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript">
+          $(function () {
+              $('#datetimepicker2').datetimepicker();
+          });
+        </script>
+      </div>
+    </div>
+    <div class="form-group col-xs-2">
+      <%= button_tag(type: "submit", name:"submit_button", class: "btn btn-info") do %>
+        <span class="glyphicon glyphicon-search"></span>
+      <% end %>
+    </div>
+    
+  </div>
+<% end %>
