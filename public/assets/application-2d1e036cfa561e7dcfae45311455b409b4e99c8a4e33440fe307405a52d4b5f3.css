@@ -1,0 +1,15 @@
+/* line 6, C:/Sites/msturnos/app/assets/stylesheets/application.css.scss */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* line 11, C:/Sites/msturnos/app/assets/stylesheets/application.css.scss */
+.navbar {
+  margin-bottom: 20px;
+}
+
+/* line 15, C:/Sites/msturnos/app/assets/stylesheets/application.css.scss */
+.form-error {
+  color: red;
+}
