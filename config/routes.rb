@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+
+  resources :shifts
   resources :management_shifts
   resources :shift_types
   resources :activities

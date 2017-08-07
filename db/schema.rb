@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518002732) do
+ActiveRecord::Schema.define(version: 20170807225546) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "branch_id"
@@ -59,25 +59,14 @@ ActiveRecord::Schema.define(version: 20170518002732) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "shift_types", force: :cascade do |t|
-    t.integer  "branch_id"
-    t.string   "codigo"
-    t.string   "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["branch_id"], name: "index_shift_types_on_branch_id"
-  end
-
   create_table "shifts", force: :cascade do |t|
-    t.integer  "shift_type_id"
     t.integer  "activity_id"
-    t.datetime "decha"
-    t.string   "hora_inicio"
-    t.string   "hora_fin"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.datetime "fecha"
+    t.datetime "hora_inicio"
+    t.datetime "hora_fin"
     t.index ["activity_id"], name: "index_shifts_on_activity_id"
-    t.index ["shift_type_id"], name: "index_shifts_on_shift_type_id"
   end
 
   create_table "user_shifts", force: :cascade do |t|
