@@ -18,10 +18,39 @@
       <%= select_tag :activity_id, option_groups_from_collection_for_select(@branches, :activities, :nombre, :id, :Nombre, params[:branch_id]), prompt: "Seleccionar actividad", class:"form-control"%>
     </div>
   </div>
-
+  <div class="row">
+    <div class="form-group col-xs-4">
+    <%= check_box_tag :lunes_c %>
+    <%= label_tag(:lunes_c, "Lunes") %>
+    </div>
+    <div class="form-group col-xs-4">
+    <%= check_box_tag :martes_c %>
+    <%= label_tag(:martes_c, "Martes") %>
+    </div>
+    <div class="form-group col-xs-4">
+    <%= check_box_tag :miercoles_c %>
+    <%= label_tag(:miercoles_c, "Miercoles") %>
+    </div>
+    <div class="form-group col-xs-4">
+    <%= check_box_tag :jueves_c %>
+    <%= label_tag(:jueves_c, "Jueves") %>
+    </div>
+    <div class="form-group col-xs-4">
+    <%= check_box_tag :viernes_c %>
+    <%= label_tag(:viernes_c, "Viernes") %>
+    </div>
+    <div class="form-group col-xs-4">
+    <%= check_box_tag :sabado_c %>
+    <%= label_tag(:sabado_c, "Sabado") %>
+    </div>
+    <div class="form-group col-xs-4">
+    <%= check_box_tag :domingo_c %>
+    <%= label_tag(:domingo_c, "Domingo") %>
+    </div>
+</div>
   <div class="form-group">
         <div class='input-group date' id='datetimepicker1'>
-          <%= text_field_tag :fecha, params[:since], class:"form-control", placeholder:"Fecha" %>
+          <%= text_field_tag :fecha_d, params[:since], class:"form-control", placeholder:"Fecha" %>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
@@ -34,6 +63,19 @@
     </script>
     <div class="form-group">
         <div class='input-group date' id='datetimepicker2'>
+          <%= text_field_tag :fecha_h, params[:since], class:"form-control", placeholder:"Fecha" %>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+  </div>
+    <script type="text/javascript">
+      $(function () {
+          $('#datetimepicker2').datetimepicker({format: 'DD/MM/YYYY'});
+      });
+    </script>
+    <div class="form-group">
+        <div class='input-group date' id='datetimepicker3'>
           <%= text_field_tag :hora_inicio, params[:since], class:"form-control", placeholder:"Hora de inicio" %>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-time"></span>
@@ -42,11 +84,11 @@
   </div>
     <script type="text/javascript">
       $(function () {
-          $('#datetimepicker2').datetimepicker({format: 'LT'});
+          $('#datetimepicker3').datetimepicker({format: 'LT'});
       });
     </script>
     <div class="form-group">
-        <div class='input-group date' id='datetimepicker3'>
+        <div class='input-group date' id='datetimepicker4'>
           <%= text_field_tag :hora_fin, params[:since], class:"form-control", placeholder:"Hora de fin" %>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-time"></span>
@@ -55,7 +97,7 @@
   </div>
     <script type="text/javascript">
       $(function () {
-          $('#datetimepicker3').datetimepicker({format: 'LT'});
+          $('#datetimepicker4').datetimepicker({format: 'LT'});
       });
     </script>
     <div class="actions">
