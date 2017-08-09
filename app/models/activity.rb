@@ -5,4 +5,5 @@ class Activity < ApplicationRecord
   def nombre_rubro
     area.nombre
   end
+
 end

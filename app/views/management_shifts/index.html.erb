@@ -10,23 +10,23 @@
       <th>Fecha</th>
       <th>Hora Inicio</th>
       <th>Hora Fin</th>
-      <th>Cupo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td> Constitucion </td>
-      <td> Crossfit </td>
-      <td> 17/05/2017 </td>
-      <td> 07:00 hs </td>
-      <td> 08:00 hs </td>
-      <td> 20 </td>
-      <td>
+    <% @shifts.each do |shift| %>
+      <tr>
+        <td><%= shift.activity.branch.nombre %></td>
+        <td><%= shift.activity.Nombre %></td>
+        <td><%= shift.fecha %></td>
+        <td><%= shift.hora_inicio %></td>
+        <td><%= shift.hora_fin %></td>
+        <td>
           <%= link_to admin_path, :class =>"btn btn-warning btn-xs"  do %>
               <span class="glyphicon glyphicon-list-alt"></span>
           <% end %>
-      </td>
-    </tr>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

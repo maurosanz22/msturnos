@@ -36,4 +36,10 @@ class Company < ApplicationRecord
     return activities
   end
 
+  def get_shifts_by_activity(branch_id, activity_id)
+    activities = get_activities_by_branch(branch_id)
+    shifts = activities.find(activity_id).shifts.all
+    return shifts
+    end
+
 end
