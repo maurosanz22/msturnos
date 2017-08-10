@@ -9,24 +9,7 @@ class ShiftsController < ApplicationController
 
   def index
   end
-=begin
-  def create
-    @activity = Activity.find(params[:activity_id])
-    @shift = Shift.new(shift_params)
-    @shift.activity_id = @activity.id
-    puts "Lucio"
-    puts @shift.inspect
-    respond_to do |format|
-      if @shift.save
-        format.html { redirect_to management_shifts_path, notice: 'Shift was successfully created.' }
-        format.json { render :show, status: :created, location: @shift }
-      else
-        format.html { render :new }
-        format.json { render json: @shift.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-=end
+
   def create
     @activity = Activity.find(params[:activity_id])
     start_date = Date.parse(params[:fecha_d])
@@ -45,15 +28,6 @@ class ShiftsController < ApplicationController
 
         shift.save
       end
-=begin
-      shift = Shift.newsave
-      shift.fecha = day
-      shift.hora_inicio = hora_inicio
-      shift.hora_fin = hora_fin
-      shift.activity_id = @activity.id
-
-      shift.
-=end
     end
   end
 
