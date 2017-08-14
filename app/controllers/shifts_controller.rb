@@ -1,6 +1,6 @@
 class ShiftsController < ApplicationController
   before_action :set_branches
-  before_action :set_shift
+  before_action :set_shift, only: (:edit)
 
   def new
   	@shift = Shift.new
