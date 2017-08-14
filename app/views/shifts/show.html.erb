@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Informacion
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Sucursal:</strong>
+          <%= @shift.activity.branch.nombre %>
+        </p>
+
+        <p>
+          <strong>Actividad:</strong>
+          <%= @shift.activity.Nombre %>
+        </p>
+
+        <p>
+          <strong>Fecha:</strong>
+          <%= @shift.fecha.strftime("%d/%m/%Y") %>
+        </p>
+
+        <p>
+          <strong>Hora Inicio:</strong>
+          <%= @shift.hora_inicio.strftime("%H:%M hs") %>
+        </p>
+
+        <p>
+          <strong>Hora Fin:</strong>
+          <%= @shift.hora_fin.strftime("%H:%M hs") %>
+        </p>
+
+        <p>
+          <strong>Cupo:</strong>
+          <%= @shift.activity.cupo %>
+        </p>
+
+        <p>
+          <strong>Disponibilidad:</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        Reservas
+      </div>
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+            <tr>
+                <td>1. Lucio</td>
+            </tr>
+            <tr>
+                <td>2. Mauro</td>
+            </tr>
+          <tbody>   
+         
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<!--<%= link_to 'Atras', companies_path, :class =>"btn btn-danger" %>-->

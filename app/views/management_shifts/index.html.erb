@@ -22,10 +22,11 @@
         <td><%= shift.hora_inicio.strftime("%H:%M hs")%></td>
         <td><%= shift.hora_fin.strftime("%H:%M hs")%></td>
         <td>
-          <%= link_to admin_path, :class =>"btn btn-warning btn-xs"  do %>
+          <%= link_to shift_path(shift), :class =>"btn btn-warning btn-xs"  do %>
               <span class="glyphicon glyphicon-list-alt"></span>
           <% end %>
-        </td>
+          <%= render "partials/deleteBttn", url_path: shift %>
+        </td>        
       </tr>
     <% end %>
   </tbody>

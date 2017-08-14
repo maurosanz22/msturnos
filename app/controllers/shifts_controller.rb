@@ -7,6 +7,13 @@ class ShiftsController < ApplicationController
     @activities = current_user.get_company_user_admin.get_all_activities 
   end
 
+  def index
+  end
+
+  def show
+    @shift = Shift.find(params[:id])
+  end
+
   def create
     @activity = Activity.find(params[:activity_id])
     start_date = Date.parse(params[:fecha_d])
@@ -25,6 +32,16 @@ class ShiftsController < ApplicationController
 
         shift.save
       end
+    end
+  end
+
+  def destroy
+    shift = Shift.find(params[:id])
+    puts params[:id]
+    shift.destroy if shift.present?
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'El turno se borro correctamente.' }
+      format.json { head :no_content }
     end
   end
 
