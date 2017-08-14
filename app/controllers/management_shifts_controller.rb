@@ -4,6 +4,7 @@ class ManagementShiftsController < ApplicationController
   def index
     @search_management_shift = SearchManagementShift.new
     @branches = current_user.get_company_user_admin.get_all_branchs
+    @branch = @branches
     @activities = []
     @shifts = []
     branch_id = params[:branch_id]
@@ -16,6 +17,8 @@ class ManagementShiftsController < ApplicationController
     
     if activity_id.present?
       @shifts = Shift.new.get_shifts_by_branch_activity_since_until(activity_id, params[:since], params[:until])
+      @branch = []
+      @branch.push(Branch.find(params[:branch_id]))
     end
   end  
 end

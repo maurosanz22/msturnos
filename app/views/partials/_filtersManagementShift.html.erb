@@ -1,10 +1,10 @@
 <%= form_tag management_shifts_path, :method=>'get' do |f| %>
   <div class="row">
     <div class="form-group col-xs-4">
-      <%= select_tag :branch_id, options_from_collection_for_select(@branches, "id", "nombre", params[:branch_id]) ,prompt: "Seleccionar sucursal", class:"form-control", :onChange=>"javascript: this.form.submit_button.click();"%>
+      <%= select_tag :branch_id, options_from_collection_for_select(@branches, "id", "nombre", params[:branch_id]) ,prompt: "Seleccionar sucursal", class:"form-control", id: "activity_branch_id"%>
     </div>
     <div class="form-group col-xs-4">
-      <%= select_tag :activity_id, options_from_collection_for_select(@activities, "id", "Nombre", params[:activity_id]), prompt: "Seleccionar actividad", class:"form-control"%>
+      <%= select_tag :activity_id, option_groups_from_collection_for_select(@branch, :activities, :nombre, :id, :Nombre, params[:activity_id]), prompt: "Seleccionar actividad", class:"form-control"%>
     </div>
     
   </div>
@@ -49,10 +49,11 @@
       </div>
     </div>
     <div class="form-group col-xs-2">
-      <%= button_tag(type: "submit", name:"submit_button", class: "btn btn-info") do %>
+      <%= button_tag(type: "submit", name:"submit_button", class: "btn btn-info", id: "submit_button") do %>
         <span class="glyphicon glyphicon-search"></span>
       <% end %>
     </div>
     
   </div>
 <% end %>
+

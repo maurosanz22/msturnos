@@ -1,5 +1,6 @@
 class ShiftsController < ApplicationController
   before_action :set_branches
+  before_action :set_shift
 
   def new
   	@shift = Shift.new
@@ -9,7 +10,8 @@ class ShiftsController < ApplicationController
 
   def index
   end
-
+  def show
+  end
   def create
     @activity = Activity.find(params[:activity_id])
     start_date = Date.parse(params[:fecha_d])
@@ -31,6 +33,22 @@ class ShiftsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+
+  def update
+    respond_to do |format|
+      if @shift.update(shift_params)
+        format.html { redirect_to @shift, notice: 'Se guardo correctamente.' }
+        format.json { render :show, status: :ok, location: @shift }
+      else
+        format.html { render :edit }
+        format.json { render json: @shift.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def shift_params
@@ -39,6 +57,11 @@ class ShiftsController < ApplicationController
 
   def set_branches
     @branches = current_user.get_company_user_admin.get_all_branchs
+  end
+
+  def set_shift
+      @shift = Shift.find(params[:id])
+      puts @shift
   end
 
   def set_days

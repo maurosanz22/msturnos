@@ -1,0 +1,60 @@
+<h1>Modificar turno</h1>
+<%= form_for(@shift) do |f| %>
+  <% if @shift.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @shift.errors.full_messages.each do |message| %>
+        <li class="form-error"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  	
+    <div class="form-group">
+      <%= f.text_field :activity_id, class:"form-control", placeholder: "Seleccionar actividad"%>
+    </div>
+
+    <div class="form-group">
+        <div class='input-group date' id='datetimepicker2'>
+          <%= f.text_field :fecha, class:"form-control", placeholder:"Fecha" %>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+  </div>
+    <script type="text/javascript">
+      $(function () {
+          $('#datetimepicker2').datetimepicker({format: 'YYYY-MM-DD'});
+      });
+    </script>
+    <div class="form-group">
+        <div class='input-group date' id='datetimepicker3'>
+          <%= f.text_field :hora_inicio, class:"form-control", placeholder:"Hora de inicio" %>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-time"></span>
+          </span>
+        </div>
+  </div>
+    <script type="text/javascript">
+      $(function () {
+          $('#datetimepicker3').datetimepicker({format: 'LT'});
+      });
+    </script>
+    <div class="form-group">
+        <div class='input-group date' id='datetimepicker4'>
+          <%= f.text_field :hora_fin, class:"form-control", placeholder:"Hora de fin" %>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-time"></span>
+          </span>
+        </div>
+  </div>
+    <script type="text/javascript">
+      $(function () {
+          $('#datetimepicker4').datetimepicker({format: 'LT'});
+      });
+    </script>
+    
+    <div class="actions">
+    <%= render "partials/saveAndCancelBttn", form: f,cancel_path: management_shifts_path %>
+  </div>
+<% end %>
