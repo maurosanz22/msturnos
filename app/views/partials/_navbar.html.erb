@@ -32,7 +32,7 @@
                 <li><%= link_to "Datos de la empresa", current_user.companies.first %></li>
             <% end %>
             <% if current_user.is_normal_user? %>
-                <li><a href="#">Buscar empresa</a></li>
+                <li><%= link_to "Buscar empresa", search_company_path %></li>     
             <% end %>            
         </ul>
         <% end %>

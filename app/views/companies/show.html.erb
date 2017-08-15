@@ -57,7 +57,7 @@
           </thead>
 
           <tbody>
-            <% @company.users.all.each do |user| %>
+            <% @users.each do |user| %>
               <tr>
                 <td><%= user.email %></td>
                 <td>

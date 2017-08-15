@@ -16,7 +16,7 @@ class ManagementShiftsController < ApplicationController
     activity_id = params[:activity_id]
     
     if activity_id.present?
-      @shifts = Shift.new.get_shifts_by_branch_activity_since_until(activity_id, params[:since], params[:until])
+      @shifts = Shift.new.get_shifts_by_branch_activity_since_until(activity_id, params[:since], params[:until]).order('fecha, hora_inicio')
       @branch = []
       @branch.push(Branch.find(params[:branch_id]))
     end
