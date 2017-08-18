@@ -1,6 +1,9 @@
 class PortalController < ApplicationController
+	before_action :set_company, only: (:search_shifts)
+
   def index
     @companies = Company.joins(:userscompanies).where("userscompanies.user_id = ?", current_user.id)
+    @user_shifts = current_user.get_shifts_user
   end
 
   def search_company
@@ -27,5 +30,42 @@ class PortalController < ApplicationController
     else
       redirect_to :back
     end
+  end
+
+  def search_shifts
+  	@branches = @company.get_all_branchs
+  	@activities = @company.get_all_activities
+  	@branch = @branches
+  	@activities = []
+    @shifts = []
+
+    activity_id = params[:activity_id]
+    
+    if activity_id.present?
+      @shifts = Shift.new.get_shifts_by_branch_activity_since_until(activity_id, params[:since], params[:until])
+      @branch = []
+      @branch.push(Branch.find(params[:branch_id]))
+    end
+  end
+
+  def reserve_shifts
+    user_id = current_user.id
+    shift_ids = []
+    shift_ids = params[:shift_ids]
+    puts shift_ids
+    shift_ids.each do |shift_id|
+	    if user_id.present? && shift_id.present?
+	      UserShift.create(user_id: user_id, shift_id: shift_id)
+	    else
+	      redirect_to :back
+	    end
+	end
+	redirect_to portal_path
+  end
+
+  private
+
+  def set_company
+  	@company = Company.find(params[:id])
   end
 end

@@ -9,15 +9,21 @@
           <thead>
             <tr>
               <th>Empresa</th>
+              <th>Actividad</th>
               <th>Fecha</th>
+              <th>Hora</th>
               <th colspan="3"></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>...</td>
-              <td>...</td>
-            </tr>
+            <% @user_shifts.each do |shift| %>
+              <tr>
+                <td></td>
+                <td><%= shift.activity.Nombre %></td>
+                <td><%= shift.fecha.strftime("%d/%m/%Y")%></td>
+                <td><%= shift.hora_inicio.strftime("%H:%M hs")%></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
@@ -41,7 +47,7 @@
               <tr>
                 <td><%= company.razon_social %></td>
                 <td>
-                  <%= link_to "...", portal_path, :class =>"btn btn-primary btn-xs" %>
+                  <%= link_to "...", search_shifts_path(company.id), :class =>"btn btn-primary btn-xs" %>
                 </td>
               </tr>
             <% end %>

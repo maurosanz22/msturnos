@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   resources :branches
   resources :companies
   resources :areas
-  
+  resources :user_shifts
+
   get 'portal/index' => 'portal#index', :as => 'portal'
+  get 'portal/:id/search_shifts' => 'portal#search_shifts', :as => 'search_shifts'
+  post 'portal/reserve_shifts' => 'portal#reserve_shifts', :as => 'reserve_shifts'
   get 'portal/search_company' => 'portal#search_company', :as => 'search_company'
   get 'portal/follow_company/:company_id' => 'portal#follow_company', :as => 'follow_company'
 
