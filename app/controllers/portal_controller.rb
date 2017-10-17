@@ -55,7 +55,7 @@ class PortalController < ApplicationController
     puts shift_ids
     shift_ids.each do |shift_id|
 	    if user_id.present? && shift_id.present?
-	      UserShift.create(user_id: user_id, shift_id: shift_id)
+	      @usershift = UserShift.create(user_id: user_id, shift_id: shift_id)
 	    else
 	      redirect_to :back
 	    end
@@ -68,4 +68,5 @@ class PortalController < ApplicationController
   def set_company
   	@company = Company.find(params[:id])
   end
+
 end
