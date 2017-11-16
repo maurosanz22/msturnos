@@ -31,7 +31,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       if @company.save
 
-        format.html { redirect_to current_user.permission_level == 3 ? companies_path : new_user_registration_path(company_id: @company.id, email: @company.email) , notice: 'La empresa se creo correctamente.' }
+        format.html { redirect_to current_user.present? && current_user.permission_level == 3 ? companies_path : new_user_registration_path(company_id: @company.id, email: @company.email) , notice: 'La empresa se creo correctamente.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
