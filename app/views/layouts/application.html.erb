@@ -10,9 +10,7 @@
 
   <body>
     <div class="container theme-showcase">     
-      <% if user_signed_in? %>
         <%= render "partials/navbar" %>
-      <% end %>
       <% if notice %>
         <p class="alert bg-success"><%= notice %></p>
       <%end%> 

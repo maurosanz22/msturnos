@@ -1,41 +1,52 @@
 <%= form_tag reserve_shifts_path do |f| %>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Sucursal</th>
-      <th>Actividad</th>
-      <th>Fecha</th>
-      <th>Hora Inicio</th>
-      <th>Hora Fin</th>
-      <% if current_user.is_normal_user? %>
-      <th><%= submit_tag "Reservar", method: :get, data: { confirm: 'Are you sure?' }, :class =>"btn btn-success" %></th>
-      <% end %> 
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @shifts.each do |shift| %>
-      <tr>
-        <td><%= shift.activity.branch.nombre %></td>
-        <td><%= shift.activity.Nombre %></td>
-        <td><%= shift.fecha.strftime("%d/%m/%Y")%></td>
-        <td><%= shift.hora_inicio.strftime("%H:%M hs")%></td>
-        <td><%= shift.hora_fin.strftime("%H:%M hs")%></td>
-        <td>
-        <% if current_user.is_normal_admin? %>
-          <%= link_to shift_path(shift), :class =>"btn btn-warning btn-xs"  do %>
-              <span class="glyphicon glyphicon-list-alt"></span>
-          <% end %>
-          <%= render "partials/deleteBttn", url_path: shift %>
+  <% if @shifts.any? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sucursal</th>
+          <th>Actividad</th>
+          <th>Fecha</th>
+          <th>Hora Inicio</th>
+          <th>Hora Fin</th>
+          <th>Cupo</th>
+          <th>Disponibilidad</th>
+          <% if current_user.is_normal_user? && @shifts.any? %>
+          <th><%= submit_tag "Reservar", method: :get, data: { confirm: 'Usted esta seguro?' }, :class =>"btn btn-success" %></th>
+          <% end %> 
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shifts.each do |shift| %>
+          <tr>
+            <td><%= shift.activity.branch.nombre %></td>
+            <td><%= shift.activity.Nombre %></td>
+            <td><%= shift.fecha.strftime("%d/%m/%Y")%></td>
+            <td><%= shift.hora_inicio.strftime("%H:%M hs")%></td>
+            <td><%= shift.hora_fin.strftime("%H:%M hs")%></td>
+            <td><%= shift.activity.cupo %></td>
+            <td><%= shift.disponibilidad%></td>
+            <td>
+            <% if current_user.is_normal_admin? %>
+              <%= link_to shift_path(shift), :class =>"btn btn-warning btn-xs"  do %>
+                  <span class="glyphicon glyphicon-list-alt"></span>
+              <% end %>
+              <%= render "partials/deleteBttn", url_path: shift %>
+            <% end %>
+            <% if current_user.is_normal_user? %>
+              <div class="form-group col-xs-4" >
+                <%= check_box_tag "shift_ids[]", shift.id, false, disabled: !shift.available_for_user(current_user.id) %>
+              </div>
+            <% end %> 
+            </td>        
+          </tr>
         <% end %>
-        <% if current_user.is_normal_user? %>
-          <div class="form-group col-xs-4">
-            <%= check_box_tag "shift_ids[]", shift.id %>
-          </div>
-        <% end %> 
-        </td>        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  <% elsif params[:search] == 'true' %>
+    <br>
+    <br>
+    <br>
+    <p>No se encontraron turnos.</p>
+  <% end %>
 <% end %>

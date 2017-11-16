@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      company:
+        area: "Rubro"
+      shift:
+        fecha: ""
+        hora_inicio: ""
+      activity:
+        branch: "Sucursal"

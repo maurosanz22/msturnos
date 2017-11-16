@@ -15,15 +15,15 @@ class ApplicationController < ActionController::Base
   protected 
 
 	def authentication_user!
-		redirect_to admin_path unless user_signed_in? && current_user.is_normal_user?
+		redirect_to root_path unless user_signed_in? && current_user.is_normal_user?
 	end
 
 	def authentication_admin!
-		redirect_to new_user_session_path unless user_signed_in? && current_user.is_normal_admin?
+		redirect_to root_path unless user_signed_in? && current_user.is_normal_admin?
 	end
 
   def authentication_super_admin!
-		redirect_to new_user_session_path unless user_signed_in? && current_user.is_normal_super_admin?
+		redirect_to root_path unless user_signed_in? && current_user.is_normal_super_admin?
 	end
 
 	def configure_permitted_parameters

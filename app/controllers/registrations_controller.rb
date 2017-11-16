@@ -11,6 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
       puts "registration controller - create"
+      @email = params[:user][:email]
       
       build_resource(sign_up_params)
       company_id = params[:company_id]

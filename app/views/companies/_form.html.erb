@@ -12,7 +12,7 @@
   <div class="row">
     <div class="form-group col-md-6">
       <label for="rubro">Rubro</label>
-      <%= f.select :area_id, @areas.collect {|x| [x.nombre, x.id]}, {include_blank: true}, class:"form-control" %>
+      <%= f.select :area_id, @areas.collect {|x| [x.nombre, x.id]}, {include_blank: "-- Seleccionar --"}, class:"form-control" %>
     </div>
   </div>
 
@@ -36,7 +36,7 @@
 
     <div class="form-group col-md-6">
       <%= f.label :email %>
-      <%= f.email_field :email, class:"form-control", placeholder:"Email" %>
+      <%= f.email_field :email, class:"form-control", type: 'email', placeholder:"Email" %>
     </div>
   </div>
 
@@ -53,6 +53,6 @@
   </div>
 
   <div class="actions">
-    <%= render "partials/saveAndCancelBttn", form: f, cancel_path: companies_path %>
+    <%= render "partials/saveAndCancelBttn", form: f, cancel_path: user_signed_in? ? companies_path : root_path %>
   </div>
 <% end %>

@@ -12,26 +12,43 @@ class ShiftsController < ApplicationController
 
   def show
     @shift = Shift.find(params[:id])
+    @clients = []
+    users_shift = UserShift.where("shift_id = ?", params[:id])
+
+    users_shift.each do |us|
+      @clients.push(User.find(us.user_id))
+    end 
   end
 
   def create
-    @activity = Activity.find(params[:activity_id])
-    start_date = Date.parse(params[:fecha_d])
-    end_date = Date.parse(params[:fecha_h])
-    hora_inicio = Time.parse(params[:hora_inicio])
-    hora_fin = Time.parse(params[:hora_fin])
-    set_days
+    shift = Shift.new
 
-    (start_date..end_date).each do |day|
-      if @dias.include? day.wday
-        shift = Shift.new
-        shift.fecha = day
-        shift.hora_inicio = hora_inicio
-        shift.hora_fin = hora_fin
-        shift.activity_id = @activity.id
+    if params[:activity_id].present? && params[:fecha_d].present? && params[:fecha_h].present? && params[:hora_inicio].present? && params[:hora_fin].present? && (params[:lunes_c].present? || params[:martes_c].present? || params[:miercoles_c].present? || params[:jueves_c].present? || params[:viernes_c].present? || params[:sabado_c].present? || params[:domingo_c])
+      @activity = Activity.find(params[:activity_id])
+      start_date = Date.parse(params[:fecha_d])
+      end_date = Date.parse(params[:fecha_h])
+      hora_inicio = Time.parse(params[:hora_inicio])
+      hora_fin = Time.parse(params[:hora_fin])
 
-        shift.save
+      set_days
+
+      (start_date..end_date).each do |day|
+        if @dias.include? day.wday
+          shift = Shift.new
+          shift.fecha = day
+          shift.hora_inicio = hora_inicio
+          shift.hora_fin = hora_fin
+          shift.activity_id = @activity.id
+
+          shift.save
+        end
       end
+      redirect_to management_shifts_path, notice: "Los turnos se generaron correctamente"
+    else
+      @shift = Shift.new
+      @shift.errors.add(:hora_inicio , :blank, message: "Todos los campos son requeridos")
+
+      render :new 
     end
   end
 
