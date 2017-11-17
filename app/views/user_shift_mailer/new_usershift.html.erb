@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1> Confirmacion de Turno para <%= @activity.Nombre %> </h1>
+
+	<p>Su turno para <%= @activity.Nombre %>, el dia <%= @shift.fecha.strftime("%d/%m/%Y") %> a las <%= @shift.hora_inicio.strftime("%H:%M hs") %> se ha reservado correctamente.</p>
+</body>
+</html>

@@ -72,6 +72,7 @@ class PortalController < ApplicationController
             redirect_to portal_path, alert: 'No se puede reservar' 
         else
           success = true
+          UserShiftMailer.new_usershift(user_shift).deliver_later
         end 
       end    
     end
@@ -95,4 +96,5 @@ class PortalController < ApplicationController
   def set_company
   	@company = Company.find(params[:id])
   end
+
 end
