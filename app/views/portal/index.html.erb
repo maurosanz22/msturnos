@@ -1,7 +1,7 @@
 <h2>Bienvenido <span class="strong"><%= current_user.email %></span></h2>
 <br>
 <br>
-<div class="row">
+<div class="container">
   <div class="col-md-6">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -38,37 +38,6 @@
         </table>
       </div>
     </div>
-  </div>
-  <div class="col-md-6">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        Empresas
-      </div>
-      <div class="panel-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @companies.each do |company| %>
-              <tr>
-                <td><%= company.razon_social %></td>
-                <td>
-                  <%= link_to "...", search_shifts_path(company.id, 'false'), :class =>"btn btn-primary btn-xs" %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>        
-      </div>
-    </div>    
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
     <div class="panel panel-success">
       <div class="panel-heading">
         Turnos futuros
@@ -104,10 +73,6 @@
         </table>
       </div>
     </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
     <div class="panel panel-warning">
       <div class="panel-heading">
         Turnos pasados
@@ -138,5 +103,33 @@
         </table>
       </div>
     </div>
+  </div>
+  
+  <div class="col-md-6">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        Empresas
+      </div>
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @companies.each do |company| %>
+              <tr>
+                <td><%= company.razon_social %></td>
+                <td>
+                  <%= link_to "...", search_shifts_path(company.id, 'false'), :class =>"btn btn-primary btn-xs" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>        
+      </div>
+    </div>    
   </div>
 </div>
