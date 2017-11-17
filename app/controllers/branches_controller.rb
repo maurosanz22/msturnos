@@ -1,7 +1,7 @@
 class BranchesController < ApplicationController
   before_action :set_branch, only: [:show, :edit, :update, :destroy]
   before_action :set_company
-
+  before_action :authentication_admin!
   # GET /branches
   # GET /branches.json
   def index
@@ -60,7 +60,7 @@ class BranchesController < ApplicationController
     Activity.where(branch_id: @branch.id).destroy_all
     @branch.destroy
     respond_to do |format|
-      format.html { redirect_to branches_url, notice: 'Branch was successfully destroyed.' }
+      format.html { redirect_to branches_url, notice: 'Se borro correctamente.' }
       format.json { head :no_content }
     end
   end

@@ -20,7 +20,7 @@
     <tr>
       <th>Nombre</th>
       <th>Rubro</th>      
-      <th>Tareas</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +29,7 @@
         <td><%= company.razon_social %></td>
         <td><%= company.nombre_rubro %></td>        
         <td>
-          <%= link_to "Seguir", follow_company_path(company.id), method: :get, data: { confirm: 'Are you sure?' }, :class =>"btn btn-primary btn-xs" %>
+          <%= link_to "Seguir", follow_company_path(company.id), method: :get, data: { confirm: 'Usted esta seguro?' }, :class =>"btn btn-primary btn-xs" %>
         </td>
       </tr>
     <% end %>

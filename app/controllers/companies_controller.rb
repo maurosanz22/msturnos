@@ -30,7 +30,8 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to new_user_registration_path(company_id: @company.id, email: @company.email) , notice: 'Company was successfully created.' }
+
+        format.html { redirect_to current_user.present? && current_user.permission_level == 3 ? companies_path : new_user_registration_path(company_id: @company.id, email: @company.email) , notice: 'La empresa se creo correctamente.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -44,7 +45,7 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+        format.html { redirect_to @company, notice: 'La empresa se modifico correctamente.' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }
@@ -58,7 +59,7 @@ class CompaniesController < ApplicationController
   def destroy
     @company.destroy
     respond_to do |format|
-      format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
+      format.html { redirect_to companies_url, notice: 'La empresa se borro correctamente.' }
       format.json { head :no_content }
     end
   end

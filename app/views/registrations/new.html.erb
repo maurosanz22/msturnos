@@ -1,29 +1,64 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <h2>Nuevo usuario</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      
+      <div class="row">
+        <div class="form-group col-md-4"> </div>
+        <div class="form-group col-md-4">
+          <h2>Nuevo usuario</h2>
+        </div>
+        <div class="form-group col-md-4"> </div>
+      </div>
       <%= devise_error_messages! %>
 
-      <label>Email</label>
-      <%= f.email_field :email, class: 'form-control', autofocus: true, type: 'email', :value => @email %></br>
-      <label>Contraseña</label><em> <%= @minimum_password_length %> caracteres minimos</em>
-      <%= f.password_field :password, autocomplete: "off", class: 'form-control', type:"password" %></br>
-      <label>Confirmar contraseña</label>
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', type:"password" %></br>
+      <div class="row">
+        <div class="form-group col-md-4"> </div>
+        <div class="form-group col-md-4">
+          <label for="rubro">Email</label>
+          <%= f.email_field :email, class: 'form-control', autofocus: true, type: 'email', :value => @email %></br>
+        </div>
+        <div class="form-group col-md-4"> </div>
+      </div>
+
+      
+      <div class="row">
+        <div class="form-group col-md-4"> </div>
+        <div class="form-group col-md-4">
+          <label>Contraseña</label><em> <%= @minimum_password_length %> caracteres minimos</em>
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control', type:"password" %></br>
+        </div>
+        <div class="form-group col-md-4"> </div>
+      </div>
+      
+      <div class="row">
+        <div class="form-group col-md-4"> </div>
+        <div class="form-group col-md-4">
+          <label>Confirmar contraseña</label>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', type:"password" %></br>
+        </div>
+        <div class="form-group col-md-4"> </div>
+      </div>
+      
+      
+      
+      
       <%= hidden_field_tag(:permission_level, @company_id.nil? ? 1 : 2)%>
       <%= hidden_field_tag(:company_id, @company_id) %>
 
       <div class="actions">
-        <%= f.submit "Crear", class: "btn btn-lg btn-success btn-block" %>
-        <%= link_to "Atras", new_user_session_path %>
+        <div class="row">
+          <div class="form-group col-md-4"> </div>
+          <div class="form-group col-md-4">
+            <%= f.submit "Crear", class: "btn btn-lg btn-success btn-block" %>
+          </div>
+          <div class="form-group col-md-4"> </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-4"> </div>
+          <div class="form-group col-md-4">
+            <%= link_to "Home", root_path %>
+          </div>
+          <div class="form-group col-md-4"> </div>
+        </div>       
       </div>
-    </div>
-  <div class="col-md-4"></div>
-<% end %>
+    <% end %>
 
-
-<style>
-  body {
-    background-color: #eee;
-  }
-</style>

@@ -18,7 +18,7 @@
         <td><%= branch.telefono %></td>
         <td>
           <%= link_to branch, :class =>"btn btn-success btn-xs"  do %>
-            <span class="glyphicon glyphicon-plus"></span>
+            <span class="glyphicon glyphicon-list-alt"></span>
           <% end %>
           <%= render "partials/editBttn", url_path: edit_branch_path(branch) %>
           <%= render "partials/deleteBttn", url_path: branch %>

@@ -15,6 +15,6 @@ class User < ApplicationRecord
   end
 
   def get_shifts_user
-    shifts.all
+    shifts.order('fecha').order('hora_inicio')
   end
 end

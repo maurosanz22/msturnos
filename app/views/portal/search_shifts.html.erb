@@ -1,4 +1,4 @@
-<h1>Buscar turnos</h1>
-
-<%= render "partials/filtersManagementShift.html", path: search_shifts_path(params[:id]) %>
+<h2><%= @company.razon_social %> </h2>
+<h3>Buscar turnos </h3>
+<%= render "partials/filtersManagementShift.html", path: search_shifts_path(params[:id], 'true') %>
 <%= render "partials/tableManagementShift.html" %>

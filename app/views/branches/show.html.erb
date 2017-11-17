@@ -42,11 +42,7 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-6">
-    <%= link_to 'Atras', branches_path, :class =>"btn btn-danger" %>
-  </div>
-</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -69,7 +65,7 @@
 
           <div class="form-group">
             <label>Duracion en minutos</label>
-            <%= number_field_tag :duracion_minutos, params[:duracion_minutos], class:"form-control", :required => true %>
+            <%= number_field_tag :duracion_minutos, params[:duracion_minutos], class:"form-control" %>
           </div>
           <%= hidden_field_tag(:branch_id, @branch.id) %>         
 

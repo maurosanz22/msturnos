@@ -21,7 +21,9 @@
         <td><%= company.titular %></td>
         <td><%= company.celular %></td>
         <td>
-            <%= render "partials/editBttn", url_path: company_path(company) %>
+            <%= link_to company_path(company), :class =>"btn btn-warning btn-xs"  do %>
+              <span class="glyphicon glyphicon-th-list"></span>
+            <% end %>
             <%= render "partials/editBttn", url_path: edit_company_path(company) %>
             <%= render "partials/deleteBttn", url_path: company %>
         </td>
