@@ -6,9 +6,19 @@ class PortalController < ApplicationController
     @companies = Company.joins(:userscompanies).where("userscompanies.user_id = ?", current_user.id)
     user_shifts = current_user.get_shifts_user
 
-    @current_shifts = user_shifts.where(fecha: DateTime.now..Date.current.end_of_day) 
+    @pass_shifts = []
+    @current_shifts = []
     @future_shifts = user_shifts.where('fecha > ?',  Date.current.end_of_day)
-    @pass_shifts = user_shifts.where('fecha < ?', DateTime.now)
+  
+    user_shifts.each do |s| 
+      date_start = Time.zone.parse(s.fecha.to_date.to_s + " " + s.hora_inicio.hour.to_s + ":" + s.hora_inicio.min.to_s)
+
+      if date_start.between?(DateTime.now, Date.current.end_of_day)
+        @current_shifts << s
+      elsif date_start < DateTime.now
+        @pass_shifts << s
+      end
+    end   
   end
 
   def search_company
